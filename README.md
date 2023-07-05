@@ -1,19 +1,23 @@
-# Discord Chatbot with GPT-4
+# Discord Chatbot with GPT-3.5
 
-This is a Discord chatbot that interacts with the GPT-4 model from OpenAI. The bot listens to messages in a Discord channel and responds with generated text using the GPT-4 model.
+This is a Discord chatbot that utilizes the GPT-3.5 model from OpenAI to generate responses to messages in a Discord channel.
 
 ## Prerequisites
 
-- Node.js (v14 or higher)
-- Discord bot token
-- OpenAI API key
+Before running the chatbot, ensure you have the following prerequisites:
+
+- Node.js (v14 or higher) installed on your machine.
+- Discord bot token obtained from the Discord Developer Portal.
+- OpenAI API key to access the GPT-3.5 model.
 
 ## Installation
+
+To install and set up the chatbot, follow these steps:
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/discord-gpt4-bot.git
+   git clone https://github.com/Taner-Y-Banth/chatgpt-discord.git
    ```
 
 2. Install the dependencies:
@@ -24,18 +28,22 @@ This is a Discord chatbot that interacts with the GPT-4 model from OpenAI. The b
 
 ## Usage
 
+To use the chatbot, follow these steps:
+
 1. Configure the bot:
 
    - Open the `index.js` file.
    - Provide your OpenAI API key and Discord bot token:
-   
+
      ```javascript
      const argv = minimist(process.argv.slice(2));
      // ...
-     const gpt = new ChatGPT({
+     const configuration = new Configuration({
        apiKey: argv.openaiKey,
-       model: 'gpt-4.0', // or any other GPT-4 model name
      });
+
+     const openai = new OpenAIApi(configuration);
+
      // ...
      client.login(argv.discordToken);
      ```
@@ -50,10 +58,14 @@ This is a Discord chatbot that interacts with the GPT-4 model from OpenAI. The b
 
 3. Invite the bot to your Discord server using the generated OAuth2 URL.
 
-4. In your Discord channel, use the following command to interact with the GPT-4 model:
+4. In your Discord channel, use the following command to interact with the GPT-3.5 model:
 
    ```
-   !gpt <your message>
+   !code <your message>
    ```
 
-   Replace `<your message>` with the text you want to send to the GPT-4 model.
+   Replace `<your message>` with the text you want to send to the GPT-3.5 model.
+
+The provided code sets up a Discord chatbot that listens for messages in a channel and responds with generated text from the GPT-3.5 model. It handles the `!code` command, which triggers the bot to generate a response based on the user's input.
+
+Make sure to replace the placeholders `YOUR_OPENAI_API_KEY` and `YOUR_DISCORD_BOT_TOKEN` with your actual OpenAI API key and Discord bot token, respectively.
