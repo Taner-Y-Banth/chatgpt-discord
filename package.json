@@ -1,0 +1,14 @@
+{
+    "type": "module",
+  "name": "chatgpt-discord",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "minimist": "^1.2.8",
+    "openai": "^3.3.0"
+  }
+}
