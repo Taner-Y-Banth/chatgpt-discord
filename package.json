@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "launch": "node index --openaiKey=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 --discordToken=MTEyNTk1MjY1MTA3MTMyNDI0NA.GDIyfp.W4arWBGvkM-7zjIPvFB35IubFUtMYX0zwY-6JY"
+    "launch": "node index"
   },
   "dependencies": {
     "discord.js": "^12.5.3",
