@@ -36,10 +36,13 @@ client.on('message', async (message) => {
   async function getPreviousMessages(channel, limit) {
     try {
       const messages = await channel.messages.fetch({ limit: limit });
-      return messages.map((message) => ({
-        role: 'user',
-        content: message.content
-      }));
+      const sortedMessages = messages
+        .sort((a, b) => a.createdTimestamp - b.createdTimestamp)
+        .map((message) => ({
+          role: message.author.bot ? 'system' : 'user',
+          content: message.content,
+        }));
+      return sortedMessages;
     } catch (error) {
       console.error('Error retrieving previous messages:', error);
       return [];
@@ -64,7 +67,7 @@ client.on('message', async (message) => {
         { role: 'user', content: input }
       ];
 
-      // Make the request to the GPT-4 model
+      // Make the request to the GPT-3.5 model
       const completion = await openai.createChatCompletion({
         model: 'gpt-3.5-turbo', // Replace with the desired model version
         messages: messages,
