@@ -62,7 +62,7 @@ client.on('message', async (message) => {
 
       // Append previous messages and user input to the messages array
       const messages = [
-        { role: 'system', content: 'You are a helpful assistant specializing in code' },
+        { role: 'system', content: 'You are a helpful assistant named Pat' },
         ...previousMessages,
         { role: 'user', content: input }
       ];
