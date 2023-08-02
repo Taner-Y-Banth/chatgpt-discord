@@ -1,0 +1,9 @@
+{
+    "modules": [
+        {
+            "type": "nodejs",
+            "name": "bot-pat",
+            "folder": "../chatgpt-discord"
+        }
+    ]
+}

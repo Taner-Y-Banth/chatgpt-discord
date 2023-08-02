@@ -1,10 +1,10 @@
 {
     "type": "module",
-  "name": "chatgpt-discord",
-  "version": "1.0.0",
+  "name": "bot-pat",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
-    "launch": "node index"
+    "start": "node index"
   },
   "dependencies": {
     "discord.js": "^12.5.3",
