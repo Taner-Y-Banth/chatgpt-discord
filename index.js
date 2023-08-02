@@ -5,6 +5,9 @@ import minimist from 'minimist';
 // Parse command-line arguments
 const argv = minimist(process.argv.slice(2));
 
+let username = "";
+let discordCommand = "";
+
 // Create a new Discord client with the required intents
 const client = new Client();
 
@@ -21,12 +24,25 @@ client.on('ready', () => {
 
 // Event triggered when a message is received
 client.on('message', async (message) => {
-  // Ignore messages from bots
-  if (message.author.bot) return;
+  // Ignore messages from self
+  if (message.author.id == argv.botId) return;
 
   // Ignore messages that don't start with a specific prefix
   const prefix = '!'; // Customize the prefix as needed
   if (!message.content.startsWith(prefix)) return;
+
+  if (argv.name) {
+    username = argv.name;
+  } else {
+    username = "Pat"
+  }
+  
+  if (argv.command) {
+    discordCommand = argv.command;
+  } else {
+    discordCommand = "code"
+  }
+  
 
   // Extract the command and arguments from the message content
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -50,7 +66,7 @@ client.on('message', async (message) => {
   }
 
   // Command handler
-  if (command === 'code') {
+  if (command === discordCommand) {
     try {
       // Join the arguments into a single input string
       let input = args.join(' ');
@@ -62,7 +78,7 @@ client.on('message', async (message) => {
 
       // Append previous messages and user input to the messages array
       const messages = [
-        { role: 'system', content: 'You are a helpful assistant named Pat' },
+        { role: 'system', content: `You are a helpful assistant named ${username}, enjoying conversation with peers` },
         ...previousMessages,
         { role: 'user', content: input }
       ];
