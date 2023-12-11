@@ -13,10 +13,6 @@
             ],
             "program": "${workspaceFolder}/index.js",
             "envFile": "${workspaceFolder}/.nstrumenta/credentials/.env",
-            "args": [
-                "--openaiKey=`$OPENAI_API_KEY`",
-                "--discordToken=`$BOT_TOKEN`"
-            ]
         }
     ]
 }

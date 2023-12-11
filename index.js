@@ -1,15 +1,10 @@
 import { Client } from "discord.js";
-import { Configuration, OpenAIApi } from "openai";
-import minimist from "minimist";
+import OpenAI from "openai";
 
 // Create a new Discord client with the required intents
 const client = new Client();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
+const openai = new OpenAI();
 
 // Event triggered when the client is ready
 client.on("ready", () => {
@@ -60,17 +55,21 @@ client.on("message", async (message) => {
 
       // Append previous messages and user input to the messages array
       const messages = [
-        { role: "system", content: "You are a helpful assistant named chatNST. Your answers are concise and you don't add alignment boilerplate to the end of your messages" },
+        {
+          role: "system",
+          content:
+            "You are a helpful assistant named chatNST. Your answers are concise and you don't add alignment boilerplate to the end of your messages",
+        },
         ...previousMessages,
         { role: "user", content: input },
       ];
 
       // Make the request to the model
-      const completion = await openai.createChatCompletion({
+      const completion = await openai.chat.completions.create({
         model: "gpt-4", // Replace with the desired model version
         messages: messages,
       });
-      let response = completion.data.choices[0].message.content;
+      let response = completion.choices[0].message.content;
 
       console.log(`RESPONSE COMPLETED, LENGTH: ${response.length}`);
 
