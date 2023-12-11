@@ -1,7 +1,7 @@
 {
     "type": "module",
-    "name": "bot-pat",
-    "version": "1.0.2",
+    "name": "chat-nst",
+    "version": "1.0.3",
     "main": "index.js",
     "scripts": {
         "start": "node index"
